@@ -1,0 +1,23 @@
+
+import java.util.Scanner;
+
+public class Main {
+    public static void Target(int arr[], int num) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == num) {
+                System.out.println(num + " Was Found On " + i + " Index Number");
+                return;
+            }
+        }
+        System.out.println("Targer Not Found On Array");
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter The Ele. Than Can You Search : ");
+        int num = sc.nextInt();
+
+        int arr[] = { 1, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        Target(arr, num);
+    }
+}
