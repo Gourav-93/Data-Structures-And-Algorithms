@@ -1,0 +1,49 @@
+class Node {
+    int data;
+    Node next;
+    public Node(int d) {
+        data = d;
+        next = null;
+    }
+}
+public class Main {
+    public static Node InsertAtEnd(Node Head, int data) {
+        Node newNode = new Node(data);
+        if (Head == null) {
+            Head = newNode;
+        } else {
+            Node current = Head;
+            while (current.next != null) {
+                current = current.next;
+            }
+            current.next = newNode;
+        }
+        return Head;
+    }
+    public static void printList(Node Head) {
+        Node current = Head;
+        while (current != null) {
+            System.out.print(current.data);
+            System.out.print(" -> ");
+            current = current.next;
+        }
+        System.out.println("null");
+    }
+    public static void main(String[] args) {
+
+        Node Head = null;
+        Head = InsertAtEnd(Head, 20);
+        Head = InsertAtEnd(Head, 30);
+        Head = InsertAtEnd(Head, 40);
+        printList(Head);
+        Head = InsertAtEnd(Head, 50);
+        Head = InsertAtEnd(Head, 60);
+        Head = InsertAtEnd(Head, 70);
+        printList(Head);
+        Head = InsertAtEnd(Head, 80);
+        Head = InsertAtEnd(Head, 90);
+        Head = InsertAtEnd(Head, 100);
+        printList(Head);
+
+    }
+}
