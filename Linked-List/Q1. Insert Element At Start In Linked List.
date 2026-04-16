@@ -1,0 +1,43 @@
+class Node {
+    int data;
+    Node Next;
+}
+
+public class Main {
+    static void getList(Node Head) {
+        Node current = Head;
+        while (current != null) {
+            System.out.print(current.data);
+            current = current.Next;
+            System.out.print(" -> ");
+        }
+        System.out.println("null ");
+
+    }
+
+    static Node InsertAtStart(Node Head, int data) {
+        Node newNode = new Node();
+        newNode.data = data;
+        newNode.Next = null;
+
+        if (Head == null) {
+            Head = newNode;
+        } else {
+            newNode.Next = Head;
+            Head = newNode;
+        }
+        return Head;
+    }
+
+    public static void main(String[] args) {
+        Node Head = null;
+        Head = InsertAtStart(Head, 10);
+        Head = InsertAtStart(Head, 20);
+        Head = InsertAtStart(Head, 30);
+        Head = InsertAtStart(Head, 40);
+        Head = InsertAtStart(Head, 50);
+        getList(Head);
+
+    }
+
+}
