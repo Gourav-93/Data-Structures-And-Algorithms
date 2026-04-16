@@ -1,0 +1,89 @@
+class Node {
+    int data;
+    Node next;
+
+    Node(int d) {
+        data = d;
+        next = null;
+    }
+}
+
+public class Main {
+
+    public static Node addFristLL(Node Head1, int data) {
+        Node newNode = new Node(data);
+        if (Head1 == null) {
+            Head1 = newNode;
+        } else {
+            Node current = Head1;
+            while (current.next != null) {
+                current = current.next;
+            }
+            current.next = newNode;
+        }
+        return Head1;
+    }
+
+    public static Node addSecondLL(Node Head2, int data) {
+        Node newNode = new Node(data);
+        if (Head2 == null) {
+            Head2 = newNode;
+        } else {
+            Node current = Head2;
+            while (current.next != null) {
+                current = current.next;
+            }
+            current.next = newNode;
+        }
+        return Head2;
+    }
+
+    public static Node margeLL(Node Head1, Node Head2) {
+        Node dummy = new Node(-1);
+        Node temp = dummy;
+        while (Head1 != null && Head2 != null) {
+            if (Head1.data <= Head2.data) {
+                temp.next = Head1;
+                Head1 = Head1.next;
+            } else {
+                temp.next = Head2;
+                Head2 = Head2.next;
+            }
+            temp = temp.next;
+        }
+        if (Head1 != null) {
+            temp.next = Head1;
+        }
+        if (Head2 != null) {
+            temp.next = Head2;
+        }
+        return dummy.next;
+    }
+
+    public static void getLL(Node Head) {
+        Node current = Head;
+        while (current != null) {
+            System.out.print(current.data + " -> ");
+            current = current.next;
+        }
+        System.out.println("null");
+    }
+
+    public static void main(String[] args) {
+        Node Head1 = null;
+        Node Head2 = null;
+        Head1 = addFristLL(Head1, 10);
+        Head1 = addFristLL(Head1, 20);
+        Head1 = addFristLL(Head1, 30);
+        Head2 = addSecondLL(Head2, 40);
+        Head2 = addSecondLL(Head2, 50);
+        Head2 = addSecondLL(Head2, 60);
+        System.out.println("Frist Linked List : ");
+        getLL(Head1);
+        System.out.println("Second Linked List : ");
+        getLL(Head2);
+        System.out.println("Merged Linked List : ");
+        Node Head = margeLL(Head1, Head2);
+        getLL(Head);
+    }
+}
